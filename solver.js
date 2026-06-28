@@ -28,18 +28,18 @@
         var face = document.getElementById('top_area_face');
         if (face) {
             var cls = face.className || '';
-            if (cls.indexOf('hdn_top-area-face-lose') !== -1) return 'lost';
-            if (cls.indexOf('hdn_top-area-face-win') !== -1) return 'won';
+            if (cls.indexOf('hdd_top-area-face-lose') !== -1) return 'lost';
+            if (cls.indexOf('hdd_top-area-face-win') !== -1) return 'won';
         }
 
         var faceEls = document.querySelectorAll('[class*="top-area-face"]');
         for (var i = 0; i < faceEls.length; i++) {
             var cls2 = faceEls[i].className || '';
-            if (cls2.indexOf('hdn_top-area-face-lose') !== -1) return 'lost';
-            if (cls2.indexOf('hdn_top-area-face-win') !== -1) return 'won';
+            if (cls2.indexOf('hdd_top-area-face-lose') !== -1) return 'lost';
+            if (cls2.indexOf('hdd_top-area-face-win') !== -1) return 'won';
         }
 
-        if (document.querySelectorAll('.cell.hdn_mine').length > 0) return 'lost';
+        if (document.querySelectorAll('.cell.hdd_mine').length > 0) return 'lost';
 
         return null;
     }
@@ -83,12 +83,15 @@
             var cls = cell.className;
             var state = 'closed', value = -1;
 
-            if (cls.indexOf('hdn_flag') !== -1) state = 'flagged';
-            else if (cls.indexOf('hdn_mine') !== -1) state = 'mine';
-            else if (cls.indexOf('hdn_opened') !== -1) {
+            if (cls.indexOf('hdd_flag') !== -1) state = 'flagged';
+            else if (cls.indexOf('hdd_mine') !== -1) state = 'mine';
+            else if (cls.indexOf('hdd_opened') !== -1) {
                 state = 'opened';
-                for (var i = 0; i <= 8; i++) {
-                    if (cls.indexOf('hdn_type' + i) !== -1) { value = i; break; }
+                if (cls.indexOf('hdd_type10') !== -1) { value = 0; }
+                else {
+                    for (var i = 1; i <= 8; i++) {
+                        if (cls.indexOf('hdd_type' + i) !== -1) { value = i; break; }
+                    }
                 }
             }
 
