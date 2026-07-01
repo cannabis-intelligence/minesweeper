@@ -18,7 +18,3 @@ the script solves the board automatically.
 ## how it works
 
 reads the board state, calculates safe cells via constraint propagation, and clicks them all.
-
----
-
-<p align="center">powered by <a href="https://cannabis-intelligence.github.io">cannabis intelligence</a></p>
